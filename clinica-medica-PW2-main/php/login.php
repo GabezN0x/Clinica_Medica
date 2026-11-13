@@ -1,3 +1,36 @@
+<?php
+require_once "conexao.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
+
+    $sql = $conexao->prepare("SELECT * FROM usuario WHERE email = ?");
+    $sql->execute([$email]);
+
+    $usuario = $sql->fetch(PDO::FETCH_ASSOC);
+
+    if ($usuario && password_verify($senha, $usuario["senha"])) {
+
+        if ($usuario["tipo_usuario"] == "recepcionista") {
+            header("Location: ../recepcionista/index.php");
+            exit;
+            }
+    
+            if ($usuario["tipo_usuario"] == "admin") {
+                header("Location: ../admin/index.php");
+                exit;
+                } else {
+            echo "Você não tem permissão para acessar esta área.";
+        }
+
+    } else {
+        echo "E-mail ou senha incorretos.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -106,7 +139,7 @@
         <div class="login-box">
 
             <h1>PriMed</h1>
-            <p class="login-subtitulo">CLÍNICA MÉDICA</p>
+            <p class="login-subtitulo">CLÍNICA MÉDICA PRIMAVERA</p>
 
             <h2>Bem-vindo(a)!</h2>
 
