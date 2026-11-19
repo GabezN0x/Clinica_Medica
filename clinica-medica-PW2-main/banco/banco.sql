@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `agendamentos` (
   CONSTRAINT `agendamentos_ibfk_4` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela clinica_medica.agendamentos: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela clinica_medica.atendimentos
 CREATE TABLE IF NOT EXISTS `atendimentos` (
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `atendimentos` (
   CONSTRAINT `atendimentos_ibfk_1` FOREIGN KEY (`id_agendamento`) REFERENCES `agendamentos` (`id_agendamento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela clinica_medica.atendimentos: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela clinica_medica.bloqueio_agenda
 CREATE TABLE IF NOT EXISTS `bloqueio_agenda` (
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `bloqueio_agenda` (
   CONSTRAINT `bloqueio_agenda_ibfk_1` FOREIGN KEY (`id_medico`) REFERENCES `medico` (`id_medico`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela clinica_medica.bloqueio_agenda: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela clinica_medica.especialidade
 CREATE TABLE IF NOT EXISTS `especialidade` (
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `especialidade` (
   UNIQUE KEY `nome` (`nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela clinica_medica.especialidade: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela clinica_medica.horario_medico
 CREATE TABLE IF NOT EXISTS `horario_medico` (
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `horario_medico` (
   CONSTRAINT `horario_medico_ibfk_1` FOREIGN KEY (`id_medico`) REFERENCES `medico` (`id_medico`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela clinica_medica.horario_medico: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela clinica_medica.medico
 CREATE TABLE IF NOT EXISTS `medico` (
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `medico` (
   CONSTRAINT `medico_ibfk_2` FOREIGN KEY (`id_especialidade`) REFERENCES `especialidade` (`id_especialidade`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela clinica_medica.medico: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela clinica_medica.paciente
 CREATE TABLE IF NOT EXISTS `paciente` (
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `paciente` (
   CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela clinica_medica.paciente: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela clinica_medica.sala
 CREATE TABLE IF NOT EXISTS `sala` (
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `sala` (
   UNIQUE KEY `numero` (`numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela clinica_medica.sala: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela clinica_medica.usuario
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -153,9 +153,12 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `tipo_usuario` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Exportação de dados foi desmarcado.
+-- Copiando dados para a tabela clinica_medica.usuario: ~2 rows (aproximadamente)
+INSERT INTO `usuario` (`id_usuario`, `nome`, `email`, `senha`, `tipo_usuario`) VALUES
+	(1, 'Recepcionista PriMed', 'recepcao@primed.com', '$2y$10$2qOLOMH1qa7S57LVlRb07OKmT.zop6voyYS9GLgoou1zYsRhpXqoG', 'recepcionista'),
+	(2, 'Administrador PriMed', 'admin@primed.com', '$2y$10$wGyYOzx78/5nxmL5mD1QVuq1FAVKiewCvgEmzpcTMCenoXD78TySW', 'admin');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
